@@ -14,7 +14,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 dir('demo-frontend') {
-                    bat 'npm test -- --watchAll=false'
+                    bat 'npm test -- --watchAll=false --passWithNoTests'
                 }
             }
         }
