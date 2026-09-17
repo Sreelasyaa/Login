@@ -3,27 +3,27 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                dir('demo-frontend') {
+                    bat 'npm install'
+                }
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'npm test -- --watchAll=false'
+                dir('demo-frontend') {
+                    bat 'npm test -- --watchAll=false'
+                }
             }
         }
 
         stage('Build Frontend') {
             steps {
-                bat 'npm run build'
+                dir('demo-frontend') {
+                    bat 'npm run build'
+                }
             }
         }
     }
