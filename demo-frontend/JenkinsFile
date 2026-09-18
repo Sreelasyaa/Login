@@ -54,7 +54,7 @@ ${env.BUILD_URL}
 Regards,
 Jenkins
 """,
-                to: "YOUR_EMAIL@gmail.com"
+                to: "lasyav7104@gmail.com"
             )
         }
 
@@ -80,7 +80,7 @@ ${env.BUILD_URL}
 Regards,
 Jenkins
 """,
-                to: "YOUR_EMAIL@gmail.com"
+                to: "lasyav7104@gmail.com"
             )
         }
     }
