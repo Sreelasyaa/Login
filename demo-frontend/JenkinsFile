@@ -31,10 +31,57 @@ pipeline {
     post {
         success {
             echo 'Frontend pipeline completed successfully!'
+
+            emailext(
+                subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """
+Hello,
+
+The demo frontend Jenkins pipeline completed successfully.
+
+Job: ${env.JOB_NAME}
+Build Number: ${env.BUILD_NUMBER}
+Status: SUCCESS
+
+The frontend was:
+- Dependencies installed
+- Tests executed
+- Production build completed
+
+Build URL:
+${env.BUILD_URL}
+
+Regards,
+Jenkins
+""",
+                to: "YOUR_EMAIL@gmail.com"
+            )
         }
 
         failure {
             echo 'Frontend pipeline failed!'
+
+            emailext(
+                subject: "FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """
+Hello,
+
+The demo frontend Jenkins pipeline failed.
+
+Job: ${env.JOB_NAME}
+Build Number: ${env.BUILD_NUMBER}
+Status: FAILURE
+
+Please check the Jenkins console output for the error.
+
+Build URL:
+${env.BUILD_URL}
+
+Regards,
+Jenkins
+""",
+                to: "YOUR_EMAIL@gmail.com"
+            )
         }
     }
 }
